@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View, TouchableOpacity, TextInput } from 'react-native'
 import { submitDeck, getDeck, listDecks, removeDeck } from '../utils/api'
 import { AsyncStorage } from 'react-native'
+import { Screen, Input } from '../styles'
 
 function addDeck(key, deck) {
   submitDeck(key, deck)
@@ -37,8 +38,8 @@ class DeckList extends React.Component {
   render() {
     const { newDeckName, myDecks } = this.state
     return (
-      <View>
-        <TextInput
+      <Screen>
+        <Input
           placeholder="New Deck Name"
           onChangeText={text => this.setState({ newDeckName: text })}
           value={this.state.newDeckName}
@@ -70,7 +71,7 @@ class DeckList extends React.Component {
             </View>
           )
         })}
-      </View>
+      </Screen>
     )
   }
 }
