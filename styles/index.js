@@ -14,4 +14,5 @@ export const Input = styled.TextInput`
 
 export const Screen = styled.View`
   padding: 20px;
+  flex: 1;
 `
