@@ -1,5 +1,11 @@
 import React from 'react'
-import { Text, View, TouchableOpacity, TextInput } from 'react-native'
+import {
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+  TextInput,
+} from 'react-native'
 import { submitDeck, getDeck, listDecks, removeDeck } from '../utils/api'
 import { Screen, Input, ListItem } from '../styles'
 

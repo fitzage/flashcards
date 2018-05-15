@@ -12,7 +12,7 @@ export const Input = styled.TextInput`
   padding: 5px;
 `
 
-export const Screen = styled.View`
+export const Screen = styled.ScrollView`
   padding: 20px;
   flex: 1;
 `
