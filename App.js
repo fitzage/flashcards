@@ -2,8 +2,12 @@ import React from 'react'
 import { Text, View, StatusBar } from 'react-native'
 import DeckList from './components/DeckList'
 import AddDeck from './components/AddDeck'
+import Deck from './components/Deck'
 import { Header } from './styles'
-import { createBottomTabNavigator, StackNavigator } from 'react-navigation'
+import {
+  createBottomTabNavigator,
+  createStackNavigator,
+} from 'react-navigation'
 import { Foundation, Entypo } from '@expo/vector-icons'
 
 const tabButtonColor = '#ffffff'
@@ -47,6 +51,15 @@ const Tabs = createBottomTabNavigator(
   },
 )
 
+const Stacks = createStackNavigator({
+  Home: {
+    screen: Tabs,
+  },
+  Deck: {
+    screen: Deck,
+  },
+})
+
 export default class App extends React.Component {
   render() {
     return (
@@ -54,7 +67,7 @@ export default class App extends React.Component {
         <Header>
           <StatusBar translucent />
         </Header>
-        <Tabs />
+        <Stacks />
       </View>
     )
   }

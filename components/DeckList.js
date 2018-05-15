@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, TouchableOpacity, TextInput } from 'react-native'
 import { submitDeck, getDeck, listDecks, removeDeck } from '../utils/api'
-import { Screen, Input } from '../styles'
+import { Screen, Input, ListItem } from '../styles'
 
 function deleteDeck(key) {
   removeDeck(key)
@@ -39,21 +39,16 @@ class DeckList extends React.Component {
         {Object.keys(myDecks).map(key => {
           return (
             <View key={key}>
-              <Text>
-                {key}: {myDecks[key].title}
-              </Text>
-              <TouchableOpacity
-                onPress={async () => {
-                  await deleteDeck(key)
-                  myNewDecks = myDecks
-                  delete myNewDecks[key]
-                  this.setState({
-                    myDecks: myNewDecks,
+              <ListItem
+                onPress={() =>
+                  this.props.navigation.navigate('Deck', {
+                    deckkey: key,
+                    DeckList: this,
                   })
-                }}
+                }
               >
-                <Text>Delete</Text>
-              </TouchableOpacity>
+                <Text>{myDecks[key].title}</Text>
+              </ListItem>
             </View>
           )
         })}
