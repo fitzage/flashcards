@@ -32,10 +32,6 @@ class DeckList extends React.Component {
     )
   }
 
-  componentDidFocus() {
-    this.getDecks()
-  }
-
   render() {
     const { myDecks } = this.state
     return (
