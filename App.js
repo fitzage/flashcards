@@ -3,12 +3,15 @@ import { Text, View, StatusBar } from 'react-native'
 import DeckList from './components/DeckList'
 import AddDeck from './components/AddDeck'
 import Deck from './components/Deck'
+import Card from './components/Card'
+import AddCard from './components/AddCard'
 import { Header } from './styles'
 import {
   createBottomTabNavigator,
   createStackNavigator,
 } from 'react-navigation'
 import { Foundation, Entypo } from '@expo/vector-icons'
+import './utils/ReactotronConfig'
 
 const tabButtonColor = '#ffffff'
 
@@ -57,6 +60,12 @@ const Stacks = createStackNavigator({
   },
   Deck: {
     screen: Deck,
+  },
+  Card: {
+    screen: Card,
+  },
+  AddCard: {
+    screen: AddCard,
   },
 })
 

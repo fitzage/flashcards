@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { getDeck, removeDeck } from '../utils/api'
-import { Screen, Input } from '../styles'
+import { Screen, Input, ListItem } from '../styles'
 
 function deleteDeck(key) {
   removeDeck(key)
@@ -44,6 +44,25 @@ class Deck extends React.Component {
         >
           <Text>Delete</Text>
         </TouchableOpacity>
+        {myDecks[deckkey] &&
+          myDecks[deckkey].questions.map((question, index) => {
+            return (
+              <View key={question}>
+                <ListItem
+                  onPress={() =>
+                    this.props.navigation.navigate('Card', {
+                      deckkey,
+                      cardindex: index,
+                    })
+                  }
+                >
+                  <Text>
+                    {question.question}: {question.answer}
+                  </Text>
+                </ListItem>
+              </View>
+            )
+          })}
       </Screen>
     )
   }

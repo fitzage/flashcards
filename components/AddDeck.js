@@ -21,7 +21,7 @@ class AddDeck extends React.Component {
           value={this.state.newDeckName}
           onSubmitEditing={() => {
             key = newDeckName.replace(/\s+/g, '').toLowerCase()
-            submitDeck(key, { title: newDeckName })
+            submitDeck(key, { title: newDeckName, questions: [] })
             this.setState({ newDeckName: '' })
             this.props.navigation.navigate('Decks')
           }}

@@ -1,5 +1,5 @@
 import { AsyncStorage } from 'react-native'
-const STORAGE_KEY = 'Flashcards:decks'
+import Reactotron from 'reactotron-react-native'
 
 export function submitDeck(key, deck) {
   return AsyncStorage.mergeItem(key, JSON.stringify(deck))
@@ -16,5 +16,14 @@ export function removeDeck(key) {
 export function getDeck(key) {
   return AsyncStorage.getItem(key).then(deck => {
     return deck
+  })
+}
+
+export function submitCard(deck, card) {
+  return AsyncStorage.getItem(deck).then(results => {
+    let data = JSON.parse(results)
+    data.questions = [...data.questions, card]
+    Reactotron.log([data.questions])
+    AsyncStorage.mergeItem(deck, JSON.stringify(data))
   })
 }
