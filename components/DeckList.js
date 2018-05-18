@@ -54,6 +54,7 @@ class DeckList extends React.Component {
                 }
               >
                 <Text>{myDecks[key].title}</Text>
+                <Text>{myDecks[key].questions.length} Questions</Text>
               </ListItem>
             </View>
           )

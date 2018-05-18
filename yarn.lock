@@ -5667,6 +5667,10 @@ react-native-drawer-layout@1.3.2:
   dependencies:
     react-native-dismiss-keyboard "1.0.0"
 
+"react-native-flip-view@https://github.com/sventropy/react-native-flip-view.git":
+  version "1.0.5"
+  resolved "https://github.com/sventropy/react-native-flip-view.git#c91a3f5e040a7dc89b6526f6b8b22fb5afb14844"
+
 react-native-gesture-handler@1.0.0-alpha.41:
   version "1.0.0-alpha.41"
   resolved "https://registry.yarnpkg.com/react-native-gesture-handler/-/react-native-gesture-handler-1.0.0-alpha.41.tgz#5667a1977ab148339ec2e7b0a94ad4b959cf09e5"

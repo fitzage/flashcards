@@ -23,7 +23,14 @@ export function submitCard(deck, card) {
   return AsyncStorage.getItem(deck).then(results => {
     let data = JSON.parse(results)
     data.questions = [...data.questions, card]
-    Reactotron.log([data.questions])
+    AsyncStorage.mergeItem(deck, JSON.stringify(data))
+  })
+}
+
+export function removeCard(deck, index) {
+  return AsyncStorage.getItem(deck).then(results => {
+    let data = JSON.parse(results)
+    data.questions.splice(index, 1)
     AsyncStorage.mergeItem(deck, JSON.stringify(data))
   })
 }

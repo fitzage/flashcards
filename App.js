@@ -55,11 +55,45 @@ const Tabs = createBottomTabNavigator(
   },
 )
 
-class App extends React.Component {
-  static navigationOptions = {
-    title: 'Home',
-  }
+const Stacks = createStackNavigator(
+  {
+    Home: {
+      screen: Tabs,
+      navigationOptions: {
+        title: 'Flashcards',
+      },
+    },
+    Deck: {
+      screen: Deck,
+      navigationOptions: {
+        title: 'Deck',
+      },
+    },
+    Card: {
+      screen: Card,
+      navigationOptions: {
+        title: 'Card',
+      },
+    },
+    AddCard: {
+      screen: AddCard,
+      navigationOptions: {
+        title: 'New Card',
+      },
+    },
+  },
+  {
+    navigationOptions: {
+      initialRouteName: 'Home',
+      headerTintColor: '#ffffff',
+      headerStyle: {
+        backgroundColor: '#8171ff',
+      },
+    },
+  },
+)
 
+class App extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
@@ -68,31 +102,5 @@ class App extends React.Component {
     )
   }
 }
-
-const Stacks = createStackNavigator(
-  {
-    Home: {
-      screen: Tabs,
-    },
-    Deck: {
-      screen: Deck,
-    },
-    Card: {
-      screen: Card,
-    },
-    AddCard: {
-      screen: AddCard,
-    },
-  },
-  {
-    initialRouteName: 'Home',
-    navigationOptions: {
-      headerTintColor: '#ffffff',
-      headerStyle: {
-        backgroundColor: '#8171ff',
-      },
-    },
-  },
-)
 
 export default App

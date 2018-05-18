@@ -23,6 +23,7 @@
     "expo": "^27.0.1",
     "react": "16.3.1",
     "react-native": "~0.55.2",
+    "react-native-flip-view": "https://github.com/sventropy/react-native-flip-view.git",
     "react-navigation": "^2.0.1",
     "styled-components": "^3.2.6"
   }
