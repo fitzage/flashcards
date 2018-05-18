@@ -12,6 +12,7 @@ import {
 } from 'react-navigation'
 import { Foundation, Entypo } from '@expo/vector-icons'
 import './utils/ReactotronConfig'
+import Reactotron from 'reactotron-react-native'
 
 const tabButtonColor = '#ffffff'
 
@@ -22,7 +23,7 @@ const Tabs = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: 'Decks',
         tabBarIcon: ({ tabButtonColor }) => (
-          <Foundation name="list" size={30} color={tabButtonColor} />
+          <Foundation name="list" size={30} color="#ffffff" />
         ),
       },
     },
@@ -31,7 +32,7 @@ const Tabs = createBottomTabNavigator(
       navigationOptions: {
         tabBarLabel: 'New Deck',
         tabBarIcon: ({ tabButtonColor }) => (
-          <Entypo name="add-to-list" size={30} color={tabButtonColor} />
+          <Entypo name="add-to-list" size={30} color="#ffffff" />
         ),
       },
     },
@@ -41,7 +42,7 @@ const Tabs = createBottomTabNavigator(
       activeTintColor: '#ffffff',
       style: {
         height: 56,
-        backgroundColor: '#cccccc',
+        backgroundColor: '#8171ff',
         shadowColor: 'rgba(0,0,0,0.24)',
         shadowOffset: {
           width: 0,
@@ -54,30 +55,44 @@ const Tabs = createBottomTabNavigator(
   },
 )
 
-const Stacks = createStackNavigator({
-  Home: {
-    screen: Tabs,
-  },
-  Deck: {
-    screen: Deck,
-  },
-  Card: {
-    screen: Card,
-  },
-  AddCard: {
-    screen: AddCard,
-  },
-})
+class App extends React.Component {
+  static navigationOptions = {
+    title: 'Home',
+  }
 
-export default class App extends React.Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <Header>
-          <StatusBar translucent />
-        </Header>
         <Stacks />
       </View>
     )
   }
 }
+
+const Stacks = createStackNavigator(
+  {
+    Home: {
+      screen: Tabs,
+    },
+    Deck: {
+      screen: Deck,
+    },
+    Card: {
+      screen: Card,
+    },
+    AddCard: {
+      screen: AddCard,
+    },
+  },
+  {
+    initialRouteName: 'Home',
+    navigationOptions: {
+      headerTintColor: '#ffffff',
+      headerStyle: {
+        backgroundColor: '#8171ff',
+      },
+    },
+  },
+)
+
+export default App

@@ -2,6 +2,7 @@ import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { getDeck, removeDeck } from '../utils/api'
 import { Screen, Input, ListItem } from '../styles'
+import Reactotron from 'reactotron-react-native'
 
 function deleteDeck(key) {
   removeDeck(key)
@@ -11,6 +12,7 @@ class Deck extends React.Component {
   state = {
     myDecks: {},
   }
+
   myDeck(key) {
     getDeck(key).then(deck =>
       this.setState({

@@ -4,7 +4,7 @@ import { Constants } from 'expo'
 
 export const Header = styled.View`
   height: ${Constants.statusBarHeight};
-  background-color: #7282ff;
+  background-color: #4daeff;
 `
 
 export const Input = styled.TextInput`
