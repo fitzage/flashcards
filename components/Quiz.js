@@ -66,7 +66,7 @@ class Quiz extends React.Component {
     const { deckkey, cardindex } = this.props.navigation.state.params
     const { myDecks, index } = this.state
     return (
-      <PressableScreen onPress={this._flip}>
+      <PressableScreen>
         {myDecks[deckkey] && (
           <View>
             <Text>{myDecks[deckkey].title} Quiz</Text>
@@ -76,6 +76,9 @@ class Quiz extends React.Component {
             <Text>{myDecks[deckkey].questions[index].question}</Text>
           </View>
         )}
+        <Button onPress={this._flip}>
+          <Text>View Answer</Text>
+        </Button>
       </PressableScreen>
     )
   }
@@ -83,7 +86,7 @@ class Quiz extends React.Component {
     const { deckkey, cardindex } = this.props.navigation.state.params
     const { myDecks, index, correct } = this.state
     return (
-      <PressableScreen onPress={this._flip} color="#E4D7FF">
+      <PressableScreen color="#E4D7FF">
         {myDecks[deckkey] && (
           <View>
             <Text>{myDecks[deckkey].title} Quiz</Text>
