@@ -1,8 +1,9 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
-import { getDeck, removeDeck } from '../utils/api'
+import { getDeck, removeDeck, removeCard } from '../utils/api'
 import { Screen, Input, ListItem, Button } from '../styles'
 import Reactotron from 'reactotron-react-native'
+import { MaterialIcons } from '@expo/vector-icons'
 
 function deleteDeck(key) {
   removeDeck(key)
@@ -21,6 +22,12 @@ class Deck extends React.Component {
         },
       }),
     )
+  }
+
+  deleteCard(deckkey, index) {
+    removeCard(deckkey, index).then(deck => {
+      this.setState({ myDecks: { [deckkey]: JSON.parse(deck) } })
+    })
   }
 
   componentWillMount() {
@@ -72,6 +79,17 @@ class Deck extends React.Component {
                   <Text>
                     {question.question}: {question.answer}
                   </Text>
+                  <TouchableOpacity
+                    onPress={() => {
+                      this.deleteCard(deckkey, index)
+                    }}
+                  >
+                    <MaterialIcons
+                      name="delete-forever"
+                      size={40}
+                      color="#CE2900"
+                    />
+                  </TouchableOpacity>
                 </ListItem>
               </View>
             )
@@ -84,6 +102,15 @@ class Deck extends React.Component {
           }}
         >
           <Text>Add Card</Text>
+        </Button>
+        <Button
+          onPress={() => {
+            this.props.navigation.navigate('Quiz', {
+              deckkey,
+            })
+          }}
+        >
+          <Text>Take Quiz</Text>
         </Button>
       </Screen>
     )

@@ -4,7 +4,7 @@ import { Constants } from 'expo'
 
 export const Header = styled.View`
   height: ${Constants.statusBarHeight};
-  background-color: #4daeff;
+  background-color: #8171ff;
 `
 
 export const Input = styled.TextInput`
@@ -36,4 +36,9 @@ export const PressableScreen = styled.TouchableOpacity`
   padding: 20px;
   flex: 1;
   background: ${props => (props.color ? props.color : 'white')};
+`
+
+export const ModalInner = styled.View`
+  padding: 20px;
+  flex: 1;
 `

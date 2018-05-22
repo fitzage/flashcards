@@ -3,8 +3,8 @@ import { Text, View, StatusBar } from 'react-native'
 import DeckList from './components/DeckList'
 import AddDeck from './components/AddDeck'
 import Deck from './components/Deck'
-import Card from './components/Card'
 import AddCard from './components/AddCard'
+import Quiz from './components/Quiz'
 import { Header } from './styles'
 import {
   createBottomTabNavigator,
@@ -69,16 +69,16 @@ const Stacks = createStackNavigator(
         title: 'Deck',
       },
     },
-    Card: {
-      screen: Card,
-      navigationOptions: {
-        title: 'Card',
-      },
-    },
     AddCard: {
       screen: AddCard,
       navigationOptions: {
         title: 'New Card',
+      },
+    },
+    Quiz: {
+      screen: Quiz,
+      navigationOptions: {
+        title: 'Quiz',
       },
     },
   },
