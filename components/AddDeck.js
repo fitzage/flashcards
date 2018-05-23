@@ -2,6 +2,8 @@ import React from 'react'
 import { submitDeck } from '../utils/api'
 import { Screen, Input } from '../styles'
 
+/* TODO: When deck is created, route to that deck view instead of decklist */
+
 function addDeck(key, deck) {
   submitDeck(key, deck)
 }

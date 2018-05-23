@@ -4,6 +4,10 @@ import { getDeck } from '../utils/api'
 import { Button, PressableScreen, Header, ModalInner } from '../styles'
 import FlipView from 'react-native-flip-view'
 
+/* TODO: Restart Quiz button
+  TODO: Notification for daily quiz
+ */
+
 class Quiz extends React.Component {
   state = {
     myDecks: {},
