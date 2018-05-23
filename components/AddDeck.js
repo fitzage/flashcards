@@ -1,5 +1,4 @@
 import React from 'react'
-import { Text, View } from 'react-native'
 import { submitDeck } from '../utils/api'
 import { Screen, Input } from '../styles'
 

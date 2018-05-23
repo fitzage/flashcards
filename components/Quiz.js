@@ -1,16 +1,7 @@
 import React from 'react'
-import { Text, View, TouchableOpacity, Easing, Modal } from 'react-native'
+import { Text, View, Easing, Modal } from 'react-native'
 import { getDeck } from '../utils/api'
-import {
-  Screen,
-  Input,
-  ListItem,
-  Button,
-  PressableScreen,
-  Header,
-  ModalInner,
-} from '../styles'
-import Reactotron from 'reactotron-react-native'
+import { Button, PressableScreen, Header, ModalInner } from '../styles'
 import FlipView from 'react-native-flip-view'
 
 class Quiz extends React.Component {

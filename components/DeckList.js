@@ -1,12 +1,6 @@
 import React from 'react'
-import {
-  Text,
-  View,
-  ScrollView,
-  TouchableOpacity,
-  TextInput,
-} from 'react-native'
-import { submitDeck, getDeck, listDecks, removeDeck } from '../utils/api'
+import { Text, View, TextInput } from 'react-native'
+import { getDeck, listDecks, removeDeck } from '../utils/api'
 import { Screen, Input, ListItemPress } from '../styles'
 
 function deleteDeck(key) {

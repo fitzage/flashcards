@@ -1,18 +1,15 @@
 import React from 'react'
-import { Text, View, StatusBar } from 'react-native'
+import { View } from 'react-native'
 import DeckList from './components/DeckList'
 import AddDeck from './components/AddDeck'
 import Deck from './components/Deck'
 import AddCard from './components/AddCard'
 import Quiz from './components/Quiz'
-import { Header } from './styles'
 import {
   createBottomTabNavigator,
   createStackNavigator,
 } from 'react-navigation'
 import { Foundation, Entypo } from '@expo/vector-icons'
-import './utils/ReactotronConfig'
-import Reactotron from 'reactotron-react-native'
 
 const tabButtonColor = '#ffffff'
 

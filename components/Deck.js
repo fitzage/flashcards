@@ -1,8 +1,7 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { getDeck, removeDeck, removeCard } from '../utils/api'
-import { Screen, Input, ListItem, Button, Status } from '../styles'
-import Reactotron from 'reactotron-react-native'
+import { Screen, ListItem, Button, Status } from '../styles'
 import { MaterialIcons } from '@expo/vector-icons'
 
 function deleteDeck(key) {
