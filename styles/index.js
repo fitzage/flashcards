@@ -1,5 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
+import { TouchableOpacity } from 'react-native'
 import { Constants } from 'expo'
 
 export const Header = styled.View`
@@ -18,13 +19,17 @@ export const Screen = styled.ScrollView`
   background: white;
 `
 
-export const ListItem = styled.TouchableOpacity`
+export const ListItem = styled.View`
+  flex-direction: row;
+  justify-content: space-between;
   width: 100%;
   padding-top: 30px;
   padding-bottom: 30px;
   border: 1px solid rgba(200, 200, 200, 0);
   border-bottom-color: rgba(200, 200, 200, 1);
 `
+
+export const ListItemPress = ListItem.withComponent(TouchableOpacity)
 
 export const Button = styled.TouchableOpacity`
   padding: 20px 40px;
@@ -41,4 +46,9 @@ export const PressableScreen = styled.TouchableOpacity`
 export const ModalInner = styled.View`
   padding: 20px;
   flex: 1;
+`
+
+export const Status = styled.View`
+  flex-direction: row;
+  justify-content: flex-end;
 `

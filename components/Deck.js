@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { getDeck, removeDeck, removeCard } from '../utils/api'
-import { Screen, Input, ListItem, Button } from '../styles'
+import { Screen, Input, ListItem, Button, Status } from '../styles'
 import Reactotron from 'reactotron-react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 
@@ -15,18 +15,23 @@ class Deck extends React.Component {
   }
 
   myDeck(key) {
-    getDeck(key).then(deck =>
+    getDeck(key).then(deck => {
+      this.props.navigation.setParams({ customTitle: JSON.parse(deck).title })
       this.setState({
         myDecks: {
           [key]: JSON.parse(deck),
+          customTitle: JSON.parse(deck).title,
         },
-      }),
-    )
+      })
+    })
   }
 
   deleteCard(deckkey, index) {
-    removeCard(deckkey, index).then(deck => {
-      this.setState({ myDecks: { [deckkey]: JSON.parse(deck) } })
+    removeCard(deckkey, index)
+    myNewDecks = this.state.myDecks
+    myNewDecks[deckkey].questions.splice(index, 1)
+    this.setState({
+      myDecks: myNewDecks,
     })
   }
 
@@ -40,42 +45,28 @@ class Deck extends React.Component {
     )
   }
 
+  static navigationOptions = ({ navigation }) => {
+    const { params } = navigation.state
+    return {
+      title: params.customTitle ? params.customTitle : 'Deck',
+    }
+  }
+
   render() {
     const { deckkey, DeckList } = this.props.navigation.state.params
     const { myDecks } = this.state
     return (
       <Screen>
         {myDecks[deckkey] && (
-          <View>
-            <Text>{myDecks[deckkey].title}</Text>
-            <Text>{myDecks[deckkey].questions.length} Cards</Text>
-          </View>
+          <Status>
+            <Text>{myDecks[deckkey].questions.length} Questions</Text>
+          </Status>
         )}
-        <TouchableOpacity
-          onPress={() => {
-            deleteDeck(deckkey)
-            myNewDecks = DeckList.state.myDecks
-            delete myNewDecks[deckkey]
-            DeckList.setState({
-              myDecks: myNewDecks,
-            })
-            this.props.navigation.goBack()
-          }}
-        >
-          <Text>Delete</Text>
-        </TouchableOpacity>
         {myDecks[deckkey] &&
           myDecks[deckkey].questions.map((question, index) => {
             return (
               <View key={question.question}>
-                <ListItem
-                  onPress={() =>
-                    this.props.navigation.navigate('Card', {
-                      deckkey,
-                      cardindex: index,
-                    })
-                  }
-                >
+                <ListItem>
                   <Text>
                     {question.question}: {question.answer}
                   </Text>
@@ -86,7 +77,7 @@ class Deck extends React.Component {
                   >
                     <MaterialIcons
                       name="delete-forever"
-                      size={40}
+                      size={20}
                       color="#CE2900"
                     />
                   </TouchableOpacity>
@@ -112,6 +103,19 @@ class Deck extends React.Component {
         >
           <Text>Take Quiz</Text>
         </Button>
+        <TouchableOpacity
+          onPress={() => {
+            deleteDeck(deckkey)
+            myNewDecks = DeckList.state.myDecks
+            delete myNewDecks[deckkey]
+            DeckList.setState({
+              myDecks: myNewDecks,
+            })
+            this.props.navigation.goBack()
+          }}
+        >
+          <Text>Delete Deck</Text>
+        </TouchableOpacity>
       </Screen>
     )
   }

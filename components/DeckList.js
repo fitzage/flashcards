@@ -7,7 +7,7 @@ import {
   TextInput,
 } from 'react-native'
 import { submitDeck, getDeck, listDecks, removeDeck } from '../utils/api'
-import { Screen, Input, ListItem } from '../styles'
+import { Screen, Input, ListItemPress } from '../styles'
 
 function deleteDeck(key) {
   removeDeck(key)
@@ -45,7 +45,7 @@ class DeckList extends React.Component {
         {Object.keys(myDecks).map(key => {
           return (
             <View key={key}>
-              <ListItem
+              <ListItemPress
                 onPress={() =>
                   this.props.navigation.navigate('Deck', {
                     deckkey: key,
@@ -55,7 +55,7 @@ class DeckList extends React.Component {
               >
                 <Text>{myDecks[key].title}</Text>
                 <Text>{myDecks[key].questions.length} Questions</Text>
-              </ListItem>
+              </ListItemPress>
             </View>
           )
         })}

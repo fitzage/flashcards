@@ -65,21 +65,12 @@ const Stacks = createStackNavigator(
     },
     Deck: {
       screen: Deck,
-      navigationOptions: {
-        title: 'Deck',
-      },
     },
     AddCard: {
       screen: AddCard,
-      navigationOptions: {
-        title: 'New Card',
-      },
     },
     Quiz: {
       screen: Quiz,
-      navigationOptions: {
-        title: 'Quiz',
-      },
     },
   },
   {
