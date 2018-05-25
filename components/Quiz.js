@@ -4,7 +4,7 @@ import { getDeck } from '../utils/api'
 import { Button, PressableScreen, Header, ModalInner } from '../styles'
 import FlipView from 'react-native-flip-view'
 
-/* TODO: Restart Quiz button
+/*
   TODO: Notification for daily quiz
  */
 
@@ -180,10 +180,18 @@ class Quiz extends React.Component {
             <Button
               onPress={() => {
                 this.setModalVisible(!this.state.modalVisible)
+                this.setState({ index: 0, correct: 0 })
+              }}
+            >
+              <Text>Restart Quiz</Text>
+            </Button>
+            <Button
+              onPress={() => {
+                this.setModalVisible(!this.state.modalVisible)
                 this.props.navigation.goBack()
               }}
             >
-              <Text>Hide Modal</Text>
+              <Text>Back to Deck</Text>
             </Button>
           </ModalInner>
         </Modal>
