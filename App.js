@@ -13,6 +13,9 @@ import { Foundation, Entypo } from '@expo/vector-icons'
 
 const tabButtonColor = '#ffffff'
 
+/**
+ * @description Constructs bottom tab nav
+ */
 const Tabs = createBottomTabNavigator(
   {
     Decks: {
@@ -52,6 +55,9 @@ const Tabs = createBottomTabNavigator(
   },
 )
 
+/**
+ * @description Constructs stack navigation for decks and cards, with tab navigation embedded
+ */
 const Stacks = createStackNavigator(
   {
     Home: {
@@ -81,6 +87,10 @@ const Stacks = createStackNavigator(
   },
 )
 
+/**
+ * @description Main app component, displays StackNavigator with embedded TabNavigator
+ * @constructor
+ */
 class App extends React.Component {
   render() {
     return (

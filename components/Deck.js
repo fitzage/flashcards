@@ -4,15 +4,28 @@ import { getDeck, removeDeck, removeCard } from '../utils/api'
 import { Screen, ListItem, Button, Status } from '../styles'
 import { MaterialIcons } from '@expo/vector-icons'
 
+/**
+ * @description Remove entire deck from AsyncStorage
+ * @param {string} key - Key indicating which deck to remove
+ */
 function deleteDeck(key) {
   removeDeck(key)
 }
 
+/**
+ * @description Screen component for individual deck view
+ * @constructor
+ * @param {string} deckkey - key indicating which deck to display
+ */
 class Deck extends React.Component {
   state = {
     myDecks: {},
   }
 
+  /**
+   * @description Loads deck from API and then adds it to state, along with title to be used by navigation component
+   * @param {string} key - key indicating which deck to load from API
+   */
   myDeck(key) {
     getDeck(key).then(deck => {
       this.props.navigation.setParams({ customTitle: JSON.parse(deck).title })
@@ -25,6 +38,11 @@ class Deck extends React.Component {
     })
   }
 
+  /**
+   * @description deletes individual card from deck
+   * @param {string} deckkey - indicates which deck to delete card from
+   * @param {number} index - indicates which card to delete from the deck
+   */
   deleteCard(deckkey, index) {
     removeCard(deckkey, index)
     myNewDecks = this.state.myDecks
@@ -34,16 +52,25 @@ class Deck extends React.Component {
     })
   }
 
+  /**
+   * @description Load deck when screen mounts
+   */
   componentWillMount() {
     this.myDeck(this.props.navigation.state.params.deckkey)
   }
 
+  /**
+   * @description Bind to navigation so that component will re-render when returning after adding a new card
+   */
   componentDidMount() {
     this._sub = this.props.navigation.addListener('didFocus', () =>
       this.myDeck(this.props.navigation.state.params.deckkey),
     )
   }
 
+  /**
+   * @description Sets the navbar title
+   */
   static navigationOptions = ({ navigation }) => {
     const { params } = navigation.state
     return {

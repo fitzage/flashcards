@@ -3,11 +3,21 @@ import { Text, TouchableOpacity } from 'react-native'
 import { submitCard } from '../utils/api'
 import { Screen, Input } from '../styles'
 
+/**
+ * @description Add new card to deck
+ * @constructor
+ * @param {string} deckkey - Which deck to add the card to
+ */
 class AddCard extends React.Component {
   state = {
     newQuestion: '',
     newAnswer: '',
   }
+  /**
+   * @description Calls API for adding new card to AsyncStorage
+   * @param {string} deckkey - Key for which deck to add the card to
+   * @param {object} card - Contents of new card
+   */
   newCard(deckkey, card) {
     submitCard(deckkey, card)
   }

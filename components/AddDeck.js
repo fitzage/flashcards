@@ -4,10 +4,19 @@ import { Screen, Input } from '../styles'
 
 /* TODO: When deck is created, route to that deck view instead of decklist */
 
+/**
+ * @description Calls API to add new deck to AsyncStorage
+ * @param {string} key - Key for new deck
+ * @param {object} deck - Contents of new deck
+ */
 function addDeck(key, deck) {
   submitDeck(key, deck)
 }
 
+/**
+ * @description Screen component for creating a new deck
+ * @constructor
+ */
 class AddDeck extends React.Component {
   state = {
     newDeckName: '',

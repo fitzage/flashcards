@@ -3,14 +3,25 @@ import { Text, View, TextInput } from 'react-native'
 import { getDeck, listDecks, removeDeck } from '../utils/api'
 import { Screen, Input, ListItemPress } from '../styles'
 
+/**
+ * @description Calls API to remove entire deck from AsyncStorage
+ * @param {string} key - Key for deck to be deleted
+ */
 function deleteDeck(key) {
   removeDeck(key)
 }
 
+/**
+ * @description Lists all available decks
+ * @constructor
+ */
 class DeckList extends React.Component {
   state = {
     myDecks: {},
   }
+  /**
+   * @description Calls API to pull decks from AsyncStorage and then adds them to state
+   */
   getDecks() {
     listDecks().then(decks => {
       decks.map(key =>
@@ -26,6 +37,9 @@ class DeckList extends React.Component {
     })
   }
 
+  /**
+   * @description Binds to nav for loading decks on mount or on navigating back to this tab.
+   */
   componentDidMount() {
     this._sub = this.props.navigation.addListener('didFocus', () =>
       this.getDecks(),

@@ -8,6 +8,11 @@ import FlipView from 'react-native-flip-view'
   TODO: Notification for daily quiz
  */
 
+/**
+ * @description Component for displaying and scoring quiz
+ * @constructor
+ * @param {string} deckkey - Determines which deck to run a quiz for
+ */
 class Quiz extends React.Component {
   state = {
     myDecks: {},
@@ -17,10 +22,18 @@ class Quiz extends React.Component {
     modalVisible: false,
   }
 
+  /**
+   * @description Sets state with whether or not quiz results modal should be visible
+   * @param {boolean} visible - Visibility status for modal
+   */
   setModalVisible(visible) {
     this.setState({ modalVisible: visible })
   }
 
+  /**
+   * @description Loads deck from AsyncStorage via API
+   * @param {string} key - Which deck to load
+   */
   myDeck(key) {
     getDeck(key).then(deck =>
       this.setState({
@@ -31,10 +44,16 @@ class Quiz extends React.Component {
     )
   }
 
+  /**
+   * @description Loads deck on mount
+   */
   componentWillMount() {
     this.myDeck(this.props.navigation.state.params.deckkey)
   }
 
+  /**
+   * @description Binds to nav so deck will load when returning to screen
+   */
   componentDidMount() {
     this._sub = this.props.navigation.addListener('didFocus', () =>
       this.myDeck(this.props.navigation.state.params.deckkey),
@@ -171,6 +190,9 @@ class Quiz extends React.Component {
       </PressableScreen>
     )
   }
+  /**
+   * @description set state with determination of whether card should be flipped or not
+   */
   _flip = () => {
     this.setState({ isFlipped: !this.state.isFlipped })
   }

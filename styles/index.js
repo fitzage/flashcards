@@ -3,6 +3,10 @@ import styled from 'styled-components'
 import { TouchableOpacity } from 'react-native'
 import { Constants } from 'expo'
 
+/**
+ * @description Using styled-components to keep styling manageable and reusable
+ */
+
 export const Header = styled.View`
   height: ${Constants.statusBarHeight};
   background-color: #8171ff;
