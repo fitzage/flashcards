@@ -1,5 +1,4 @@
 import { AsyncStorage } from 'react-native'
-import Reactotron from 'reactotron-react-native'
 
 export function submitDeck(key, deck) {
   return AsyncStorage.mergeItem(key, JSON.stringify(deck))
