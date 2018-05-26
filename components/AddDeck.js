@@ -1,6 +1,7 @@
 import React from 'react'
 import { submitDeck } from '../utils/api'
-import { Screen, Input } from '../styles'
+import { Screen, Input, Button } from '../styles'
+import { Text } from 'react-native'
 
 /**
  * @description Calls API to add new deck to AsyncStorage
@@ -27,7 +28,9 @@ class AddDeck extends React.Component {
           placeholder="New Deck Name"
           onChangeText={text => this.setState({ newDeckName: text })}
           value={this.state.newDeckName}
-          onSubmitEditing={() => {
+        />
+        <Button
+          onPress={() => {
             key = newDeckName.replace(/\s+/g, '').toLowerCase()
             submitDeck(key, { title: newDeckName, questions: [] })
             this.setState({ newDeckName: '' })
@@ -35,7 +38,9 @@ class AddDeck extends React.Component {
               deckkey: key,
             })
           }}
-        />
+        >
+          <Text>Add Card</Text>
+        </Button>
       </Screen>
     )
   }
