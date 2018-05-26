@@ -1,13 +1,16 @@
 import React from 'react'
 import { Text, TouchableOpacity } from 'react-native'
 import { submitCard } from '../utils/api'
-import { Screen, Input } from '../styles'
+import { Screen, Input, Button } from '../styles'
 
 /**
  * @description Add new card to deck
  * @constructor
  * @param {string} deckkey - Which deck to add the card to
  */
+
+// TODO: Style submit button
+
 class AddCard extends React.Component {
   state = {
     newQuestion: '',
@@ -35,7 +38,7 @@ class AddCard extends React.Component {
           onChangeText={text => this.setState({ newAnswer: text })}
           value={this.state.newAnswer}
         />
-        <TouchableOpacity
+        <Button
           onPress={() => {
             deckkey = this.props.navigation.state.params.deckkey
             this.newCard(deckkey, {
@@ -47,7 +50,7 @@ class AddCard extends React.Component {
           }}
         >
           <Text>Submit</Text>
-        </TouchableOpacity>
+        </Button>
       </Screen>
     )
   }

@@ -39,6 +39,7 @@ export const Button = styled.TouchableOpacity`
   padding: 20px 40px;
   border: 1px solid black;
   border-radius: 4px;
+  margin-bottom: 10px;
 `
 
 export const PressableScreen = styled.TouchableOpacity`
@@ -55,4 +56,8 @@ export const ModalInner = styled.View`
 export const Status = styled.View`
   flex-direction: row;
   justify-content: flex-end;
+`
+
+export const Delete = styled.TouchableOpacity`
+  align-items: center;
 `

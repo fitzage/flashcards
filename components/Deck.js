@@ -1,7 +1,7 @@
 import React from 'react'
 import { Text, View, TouchableOpacity } from 'react-native'
 import { getDeck, removeDeck, removeCard } from '../utils/api'
-import { Screen, ListItem, Button, Status } from '../styles'
+import { Screen, ListItem, Button, Status, Delete } from '../styles'
 import { MaterialIcons } from '@expo/vector-icons'
 
 /**
@@ -129,7 +129,7 @@ class Deck extends React.Component {
         >
           <Text>Take Quiz</Text>
         </Button>
-        <TouchableOpacity
+        <Delete
           onPress={() => {
             deleteDeck(deckkey)
             myNewDecks = DeckList.state.myDecks
@@ -141,7 +141,7 @@ class Deck extends React.Component {
           }}
         >
           <Text>Delete Deck</Text>
-        </TouchableOpacity>
+        </Delete>
       </Screen>
     )
   }
