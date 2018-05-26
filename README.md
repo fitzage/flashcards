@@ -1,4 +1,4 @@
-# Installing
+## Installing
 
 1. Clone repo
 
@@ -17,6 +17,10 @@ cd flashdacards && yarn install
 ```
 yarn start
 ```
+
+## Platforms
+
+This app has only been tested in iOS.
 
 --------
 

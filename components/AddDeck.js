@@ -2,8 +2,6 @@ import React from 'react'
 import { submitDeck } from '../utils/api'
 import { Screen, Input } from '../styles'
 
-/* TODO: When deck is created, route to that deck view instead of decklist */
-
 /**
  * @description Calls API to add new deck to AsyncStorage
  * @param {string} key - Key for new deck
@@ -33,7 +31,9 @@ class AddDeck extends React.Component {
             key = newDeckName.replace(/\s+/g, '').toLowerCase()
             submitDeck(key, { title: newDeckName, questions: [] })
             this.setState({ newDeckName: '' })
-            this.props.navigation.navigate('Decks')
+            this.props.navigation.navigate('Deck', {
+              deckkey: key,
+            })
           }}
         />
       </Screen>

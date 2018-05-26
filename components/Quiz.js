@@ -8,10 +8,6 @@ import {
 import { Button, PressableScreen, Header, ModalInner } from '../styles'
 import FlipView from 'react-native-flip-view'
 
-/*
-  TODO: Notification for daily quiz
- */
-
 /**
  * @description Component for displaying and scoring quiz
  * @constructor

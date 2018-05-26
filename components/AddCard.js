@@ -9,8 +9,6 @@ import { Screen, Input, Button } from '../styles'
  * @param {string} deckkey - Which deck to add the card to
  */
 
-// TODO: Style submit button
-
 class AddCard extends React.Component {
   state = {
     newQuestion: '',
