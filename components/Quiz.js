@@ -1,6 +1,10 @@
 import React from 'react'
 import { Text, View, Easing, Modal } from 'react-native'
-import { getDeck } from '../utils/api'
+import {
+  getDeck,
+  clearLocalNotifications,
+  setLocalNotification,
+} from '../utils/api'
 import { Button, PressableScreen, Header, ModalInner } from '../styles'
 import FlipView from 'react-native-flip-view'
 
@@ -138,6 +142,7 @@ class Quiz extends React.Component {
                       correct: correct + 1,
                     })
                     this.setModalVisible(!this.state.modalVisible)
+                    clearLocalNotifications().then(setLocalNotification())
                   }}
                 >
                   <Text>Correct</Text>
@@ -146,6 +151,7 @@ class Quiz extends React.Component {
                   onPress={() => {
                     this.setState({ isFlipped: false })
                     this.setModalVisible(!this.state.modalVisible)
+                    clearLocalNotifications().then(setLocalNotification())
                   }}
                 >
                   <Text>Incorrect</Text>

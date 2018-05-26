@@ -10,6 +10,7 @@ import {
   createStackNavigator,
 } from 'react-navigation'
 import { Foundation, Entypo } from '@expo/vector-icons'
+import { setLocalNotification } from './utils/api'
 
 const tabButtonColor = '#ffffff'
 
@@ -92,6 +93,12 @@ const Stacks = createStackNavigator(
  * @constructor
  */
 class App extends React.Component {
+  /**
+   * @description Sets up notification, requesting permission if required
+   */
+  componentDidMount() {
+    setLocalNotification()
+  }
   render() {
     return (
       <View style={{ flex: 1 }}>
